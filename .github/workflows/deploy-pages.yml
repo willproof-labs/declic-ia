@@ -1,0 +1,78 @@
+# Déploiement GitHub Pages via les actions officielles GitHub.
+# Aucune étape de build applicative : le workflow copie uniquement le
+# contenu du site dans _site/ puis publie ce dossier.
+# La documentation du dépôt (README.md, docs/, .github/) n'est pas publiée.
+
+name: Déployer sur GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Permissions minimales requises par actions/deploy-pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un seul déploiement à la fois ; on n'interrompt pas un déploiement en cours
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Préparer le contenu publié
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+
+      - name: Copier le contenu du site dans _site/
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir _site
+          cp -R index.html css js assets .nojekyll _site/
+
+      - name: Contrôler le contenu publié
+        shell: bash
+        run: |
+          set -euo pipefail
+          for path in index.html css js assets .nojekyll assets/video/declic-ia.mp4; do
+            test -e "_site/$path" || { echo "::error::Élément manquant dans _site : $path"; exit 1; }
+          done
+          for path in README.md docs .github .gitignore; do
+            test ! -e "_site/$path" || { echo "::error::Élément non publiable dans _site : $path"; exit 1; }
+          done
+          # Limite Cloudflare Pages : 25 MiB par fichier (compatibilité secondaire)
+          oversized="$(find _site -type f -size +25M)"
+          if [ -n "$oversized" ]; then
+            echo "::error::Fichier(s) au-delà de 25 MiB : $oversized"
+            exit 1
+          fi
+          echo "Contenu publié :"
+          find _site -type f | sort
+
+      - name: Configurer GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Téléverser l’artefact Pages
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+          include-hidden-files: true   # conserve .nojekyll
+
+  deploy:
+    name: Déployer
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Déployer sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
