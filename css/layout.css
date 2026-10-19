@@ -1,0 +1,204 @@
+/* ==========================================================================
+   Déclic IA — Layout
+   Containers, header, navigation, sections, grilles, alignements.
+   Mobile-first. Les grilles sont intrinsèques (auto-fit / minmax) :
+   elles s'adaptent sans media query. Les ajustements par breakpoint
+   (menu mobile, composition du hero, inversion des colonnes…) relèvent
+   de responsive.css (Lot 2). L'habillage visuel relève de components.css.
+   ========================================================================== */
+
+/* ---- Container ---------------------------------------------------------- */
+.container {
+  width: min(100% - 2 * var(--space-gutter), var(--container-max));
+  margin-inline: auto;
+}
+
+/* ---- Header ------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: var(--md-sys-color-surface);
+  border-bottom: var(--border-width) solid var(--md-sys-color-outline-variant);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  min-height: var(--header-height);
+  padding-block: var(--space-3);
+}
+
+.brand {
+  color: var(--md-sys-color-heading);
+  font-size: var(--md-sys-typescale-title-l-size);
+  font-weight: var(--md-sys-typescale-weight-black);
+  letter-spacing: var(--md-sys-typescale-tracking-tight);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand:hover {
+  color: var(--md-sys-color-heading);
+}
+
+.brand__accent {
+  color: var(--md-sys-color-primary);
+}
+
+/* ---- Navigation principale --------------------------------------------- */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav__link {
+  display: inline-block;
+  padding-block: var(--space-2);   /* cible tactile confortable */
+  color: var(--md-sys-color-on-surface);
+  font-weight: var(--md-sys-typescale-weight-medium);
+  text-decoration: none;
+}
+
+.site-nav__link:hover {
+  color: var(--md-sys-color-primary);
+}
+
+/* ---- Sections ----------------------------------------------------------- */
+.section {
+  padding-block: var(--space-section);
+}
+
+.section__header {
+  margin-bottom: var(--space-6);
+}
+
+.section__title {
+  max-width: 24ch;
+}
+
+/* ---- Hero --------------------------------------------------------------- */
+.hero {
+  padding-block: var(--space-7) var(--space-section);
+}
+
+.hero__inner {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.hero__content {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.hero__title {
+  max-width: 14ch;
+}
+
+.hero__lead {
+  font-size: var(--md-sys-typescale-body-l-size);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* ---- Bloc deux colonnes (texte + illustration) ------------------------- */
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  align-items: center;
+  gap: var(--space-6) var(--space-8);
+}
+
+.split__content {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.split--header {
+  margin-bottom: var(--space-7);
+}
+
+.split--header .section__header {
+  margin-bottom: 0;
+}
+
+/* ---- Vidéo -------------------------------------------------------------- */
+.video {
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+/* ---- Méthode ------------------------------------------------------------ */
+.method-text {
+  display: grid;
+  gap: var(--space-3);
+  margin-block: var(--space-5) var(--space-7);
+}
+
+.figure-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: var(--space-6);
+}
+
+/* ---- Grilles de listes -------------------------------------------------- */
+.formations-grid,
+.certifications-grid {
+  display: grid;
+  gap: var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.formations-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+.certifications-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+
+/* ---- CTA final ---------------------------------------------------------- */
+.cta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  align-items: start;
+  gap: var(--space-6) var(--space-8);
+}
+
+.cta__content {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* ---- Footer ------------------------------------------------------------- */
+.site-footer {
+  padding-block: var(--space-7);
+  border-top: var(--border-width) solid var(--md-sys-color-outline-variant);
+}
+
+.site-footer__inner {
+  display: grid;
+  gap: var(--space-2);
+}

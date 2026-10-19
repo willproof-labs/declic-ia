@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Déclic IA — L’IA au service de votre agilité</title>
+  <meta name="description" content="Apprenez à utiliser l’IA générative pour retrouver le contexte, structurer l’information et consacrer plus de temps aux décisions qui comptent.">
+  <meta name="theme-color" content="#F4F1EC">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <!-- 1. HEADER -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#accueil">Déclic <span class="brand__accent">IA</span></a>
+
+      <button class="nav-toggle" type="button" aria-controls="navigation-principale" aria-expanded="false" hidden>
+        <span class="nav-toggle__label">Menu</span>
+      </button>
+
+      <nav class="site-nav" id="navigation-principale" aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#pourquoi">Pourquoi&#8239;?</a></li>
+          <li><a class="site-nav__link" href="#methode">Notre méthode</a></li>
+          <li><a class="site-nav__link" href="#formations">Formations</a></li>
+          <li><a class="site-nav__link" href="#video">La vidéo</a></li>
+        </ul>
+        <a class="button button--filled site-header__cta" href="#formations">Découvrir les formations</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1">
+
+    <!-- 2. HERO -->
+    <section class="hero" id="accueil" aria-labelledby="hero-titre">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="eyebrow">Formation IA pour les équipes agiles</p>
+          <h1 class="hero__title" id="hero-titre">L’IA au service de votre agilité.</h1>
+          <p class="hero__lead">Apprenez à utiliser l’IA générative pour retrouver le contexte, structurer l’information et consacrer plus de temps aux décisions qui comptent.</p>
+          <div class="button-group">
+            <a class="button button--filled" href="#formations">Découvrir les formations</a>
+            <a class="button button--outlined" href="#video">Voir la vidéo</a>
+          </div>
+        </div>
+        <figure class="hero__media">
+          <img src="assets/images/05_EQUIPE_AGILE_FLUIDE.jpeg"
+               alt="Illustration : une équipe de trois personnes organise ensemble des tâches en un flux clair autour d’une table."
+               width="1672" height="941" fetchpriority="high" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 3. VIDÉO LOCALE -->
+    <section class="section section--video" id="video" aria-labelledby="video-titre">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title" id="video-titre">Découvrez Déclic IA en 60 secondes</h2>
+        </header>
+        <div class="video" data-video>
+          <div class="video__frame">
+            <video class="video__player"
+                   controls
+                   preload="metadata"
+                   playsinline
+                   width="1280" height="720"
+                   poster="assets/images/06_DECLIC_IA_ENDCARD.jpeg"
+                   aria-labelledby="video-titre"
+                   aria-describedby="video-note">
+              <source src="assets/video/declic-ia.mp4" type="video/mp4">
+              <p>Votre navigateur ne permet pas de lire cette vidéo. <a href="assets/video/declic-ia.mp4">Télécharger la vidéo (MP4)</a>.</p>
+            </video>
+          </div>
+          <p class="video__note" id="video-note">Vidéo sous-titrée en français.</p>
+          <p class="video__fallback" data-video-fallback role="status" hidden>La vidéo n’est pas disponible pour le moment.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PROBLÈME -->
+    <section class="section section--problem" id="pourquoi" aria-labelledby="pourquoi-titre">
+      <div class="container split">
+        <div class="split__content">
+          <h2 class="section__title" id="pourquoi-titre">L’agilité devrait libérer, pas paralyser.</h2>
+          <ul class="problem-list">
+            <li>L’information est dispersée entre e-mails, documents, outils et réunions.</li>
+            <li>Les décisions ralentissent lorsque l’équipe doit sans cesse reconstituer le contexte.</li>
+            <li>La documentation et le backlog finissent par s’éloigner de ce qui se passe réellement.</li>
+          </ul>
+        </div>
+        <figure class="split__media">
+          <img src="assets/images/01_PROBLEME_EQUIPE_AGILE.jpeg"
+               alt="Illustration : une équipe perplexe devant un tableau couvert d’e-mails, de documents et de flèches entremêlés."
+               width="1672" height="941" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 5. NOTRE APPROCHE -->
+    <section class="section section--method" id="methode" aria-labelledby="methode-titre">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title" id="methode-titre">L’IA comme accélérateur, pas comme pilote automatique</h2>
+        </header>
+
+        <ol class="pattern" aria-label="Notre méthode, étape par étape">
+          <li class="pattern__step">Méthode</li>
+          <li class="pattern__step">Contexte</li>
+          <li class="pattern__step">IA générative</li>
+          <li class="pattern__step">Vérification</li>
+          <li class="pattern__step pattern__step--human">Décision humaine</li>
+        </ol>
+
+        <p class="key-line">Proposer, oui. Décider, non.</p>
+
+        <div class="method-text">
+          <p>L’IA aide à comprendre, structurer, comparer, synthétiser et préparer.</p>
+          <p>Le professionnel conserve le jugement, la validation et la responsabilité.</p>
+        </div>
+
+        <div class="figure-pair">
+          <figure class="figure-pair__item">
+            <img src="assets/images/03_IA_REORGANISE_BACKLOG.jpeg"
+                 alt="Illustration : à gauche, des informations éparses ; à droite, la même information organisée en liste structurée."
+                 width="1672" height="941" loading="lazy" decoding="async">
+            <figcaption>L’IA propose et structure.</figcaption>
+          </figure>
+          <figure class="figure-pair__item">
+            <img src="assets/images/04_VALIDATION_HUMAINE.jpeg"
+                 alt="Illustration : une équipe relit une liste de contrôle à l’écran et repère un élément qui demande vérification."
+                 width="1672" height="941" loading="lazy" decoding="async">
+            <figcaption>L’humain vérifie et décide.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. QUATRE FORMATIONS -->
+    <section class="section section--formations" id="formations" aria-labelledby="formations-titre">
+      <div class="container">
+        <div class="split split--header">
+          <header class="section__header split__content">
+            <h2 class="section__title" id="formations-titre">Quel sera votre prochain déclic&#8239;?</h2>
+          </header>
+          <figure class="split__media">
+            <img src="assets/images/02_FORMATION_DECLIC_IA.jpeg"
+                 alt="Illustration : un formateur anime une session en visioconférence pendant que l’équipe prend des notes."
+                 width="1672" height="941" loading="lazy" decoding="async">
+          </figure>
+        </div>
+
+        <ol class="formations-grid">
+          <li class="formation" aria-labelledby="formation-1-titre">
+            <p class="formation__step"><span class="formation__number">01</span> — <span class="formation__verb">Découvrir</span></p>
+            <h3 class="formation__title" id="formation-1-titre">Déclic IA — Les fondamentaux</h3>
+            <p class="formation__text">Comprendre l’IA générative, apprendre à contextualiser ses demandes, utiliser le grounding, structurer ses prompts, vérifier les résultats et identifier les tâches où l’IA peut réellement augmenter le travail humain.</p>
+            <p class="formation__meta"><strong>Méthodes&nbsp;:</strong> Contextualisation, prompting structuré, grounding, vérification, Human-in-the-Loop.</p>
+          </li>
+
+          <li class="formation" aria-labelledby="formation-2-titre">
+            <p class="formation__step"><span class="formation__number">02</span> — <span class="formation__verb">Augmenter</span></p>
+            <h3 class="formation__title" id="formation-2-titre">Déclic IA — Product Owner augmenté</h3>
+            <p class="formation__text">Utiliser l’IA pour explorer un problème, qualifier un besoin, challenger des hypothèses, préparer le backlog, soutenir la discovery et améliorer la communication avec les parties prenantes, sans déléguer son jugement.</p>
+          </li>
+
+          <li class="formation" aria-labelledby="formation-3-titre">
+            <p class="formation__step"><span class="formation__number">03</span> — <span class="formation__verb">Transformer</span></p>
+            <h3 class="formation__title" id="formation-3-titre">Déclic IA — De l’usage à la valeur</h3>
+            <p class="formation__text">Passer du «&nbsp;faisons de l’IA&nbsp;» à une approche pilotée par les outcomes&nbsp;: valeur métier, faisabilité, risques, parties prenantes, expérimentation et passage du POC à l’adoption.</p>
+          </li>
+
+          <li class="formation" aria-labelledby="formation-4-titre">
+            <p class="formation__step"><span class="formation__number">04</span> — <span class="formation__verb">Créer</span></p>
+            <h3 class="formation__title" id="formation-4-titre">Déclic IA — De l’idée au produit</h3>
+            <p class="formation__text">Apprendre une méthodologie reproductible pour concevoir et livrer un produit numérique avec l’IA sans commencer par choisir les outils.</p>
+            <p class="formation__meta"><strong>Étapes&nbsp;:</strong></p>
+            <ol class="formation__steps">
+              <li>Cadrer</li>
+              <li>Concevoir</li>
+              <li>Contextualiser</li>
+              <li>Générer</li>
+              <li>Critiquer et itérer</li>
+              <li>Livrer</li>
+            </ol>
+            <p class="formation__note">Les outils utilisés pendant les ateliers peuvent évoluer. La formation porte sur une méthode transférable entre assistants IA, générateurs de contenus et environnements de développement.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 7. PROLONGEZ VOTRE PARCOURS -->
+    <section class="section section--certifications" id="parcours" aria-labelledby="parcours-titre">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title" id="parcours-titre">Prolongez votre parcours</h2>
+        </header>
+
+        <ul class="certifications-grid">
+          <li class="certification" aria-labelledby="certif-1-titre">
+            <h3 class="certification__title" id="certif-1-titre">Professional Scrum Product Owner™ — AI Essentials</h3>
+            <p class="certification__org">Organisme&nbsp;: Scrum.org</p>
+            <p class="certification__text">Approfondir l’usage responsable de l’IA dans le Product Ownership, la discovery, l’expérimentation et la prise de décision.</p>
+            <p class="certification__disclaimer">Certification officielle tierce — Déclic IA n’est pas affilié à Scrum.org.</p>
+          </li>
+
+          <li class="certification" aria-labelledby="certif-2-titre">
+            <h3 class="certification__title" id="certif-2-titre">SAFe Agilist</h3>
+            <p class="certification__org">Organisme&nbsp;: Scaled Agile</p>
+            <p class="certification__text">Approfondir l’agilité à l’échelle et l’évolution des pratiques de leadership dans un environnement augmenté par l’IA.</p>
+            <p class="certification__disclaimer">Certification officielle tierce — Déclic IA n’est pas affilié à Scaled Agile.</p>
+          </li>
+
+          <li class="certification" aria-labelledby="certif-3-titre">
+            <h3 class="certification__title" id="certif-3-titre">AI-Native Value Architect</h3>
+            <p class="certification__org">Organisme&nbsp;: Scaled Agile</p>
+            <p class="certification__text">Approfondir la transformation d’opportunités IA en valeur durable, de l’identification du besoin au passage à l’échelle.</p>
+            <p class="certification__disclaimer">Certification officielle tierce — Déclic IA n’est pas affilié à Scaled Agile.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8. BÉNÉFICES -->
+    <section class="section section--benefits" id="benefices" aria-labelledby="benefices-titre">
+      <div class="container split split--reverse">
+        <div class="split__content">
+          <h2 class="section__title" id="benefices-titre">Ce qu’on veut changer dès le lendemain</h2>
+          <ul class="benefits-list">
+            <li>Moins de temps passé à retrouver le contexte.</li>
+            <li>Des questions mieux préparées.</li>
+            <li>Des décisions mieux documentées.</li>
+            <li>Des productions plus rapides sans sacrifier la vérification.</li>
+            <li>Davantage de temps consacré à la valeur et à la collaboration.</li>
+          </ul>
+        </div>
+        <figure class="split__media split__media--decorative">
+          <img src="assets/images/05_EQUIPE_AGILE_FLUIDE.jpeg"
+               alt="" width="1672" height="941" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 9. CTA FINAL / FORMULAIRE DE DÉMONSTRATION -->
+    <section class="section section--cta" id="contact" aria-labelledby="contact-titre">
+      <div class="container cta">
+        <div class="cta__content">
+          <h2 class="section__title" id="contact-titre">Prêt pour votre prochain déclic&#8239;?</h2>
+          <p class="cta__text">Découvrez comment intégrer l’IA dans votre quotidien sans perdre ce qui compte le plus&nbsp;: votre expertise.</p>
+        </div>
+
+        <!-- method="dialog" : hors d’un <dialog>, la soumission ne déclenche
+             aucune requête. Sans JavaScript, aucune donnée ne quitte la page. -->
+        <form class="demo-form" method="dialog" data-demo-form
+              data-success-message="Merci ! Ceci est une démonstration Déclic IA. Aucune donnée n’a été enregistrée.">
+          <div class="demo-form__field">
+            <label class="demo-form__label" for="email-pro">Email professionnel</label>
+            <input class="demo-form__input" id="email-pro" name="email" type="email"
+                   autocomplete="email" inputmode="email" required
+                   aria-describedby="email-pro-erreur">
+            <p class="demo-form__error" id="email-pro-erreur" data-form-error hidden></p>
+          </div>
+          <button class="button button--filled demo-form__submit" type="submit">Me tenir informé</button>
+          <p class="demo-form__status" data-form-status role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 10. FOOTER -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="brand brand--footer">Déclic <span class="brand__accent">IA</span></p>
+      <p class="site-footer__tagline">L’IA au service de votre agilité</p>
+      <p class="site-footer__mention">Site fictif réalisé dans le cadre d’un exercice de formation.</p>
+    </div>
+  </footer>
+</body>
+</html>
