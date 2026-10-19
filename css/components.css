@@ -179,6 +179,21 @@
   object-fit: contain;
 }
 
+/* Le cadre arrondi masque ce qui dépasse : l'anneau de focus du lecteur
+   est reporté sur le cadre (et, à défaut de :has(), tracé à l'intérieur). */
+.video__player:focus-visible {
+  outline-offset: calc(-1 * var(--focus-ring-width));
+}
+
+.video__frame:has(.video__player:focus-visible) {
+  outline: var(--focus-ring-width) solid var(--md-sys-color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.video__frame:has(.video__player:focus-visible) .video__player {
+  outline: none;
+}
+
 .video__note {
   margin-top: var(--space-3);
   color: var(--md-sys-color-on-surface-variant);
@@ -614,8 +629,15 @@
   justify-self: start;
 }
 
+/* Vide : invisible mais conservée dans l'arbre d'accessibilité, pour que
+   la région live annonce de façon fiable le message qui y sera inséré. */
 .demo-form__status:empty {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
 .demo-form__status {

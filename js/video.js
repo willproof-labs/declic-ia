@@ -23,8 +23,16 @@ export function initVideo() {
     video.pause();
     video.removeAttribute('controls');
     frame.hidden = true;
-    fallback.hidden = false;
     container.setAttribute('data-video-state', 'unavailable');
+
+    // La région role="status" est d'abord affichée vide, puis remplie :
+    // le message est ainsi annoncé de façon fiable par les lecteurs d'écran.
+    const message = fallback.textContent;
+    fallback.textContent = '';
+    fallback.hidden = false;
+    requestAnimationFrame(() => {
+      fallback.textContent = message;
+    });
   }
 
   // Erreur de chargement : émise sur la dernière <source>, ou sur <video>

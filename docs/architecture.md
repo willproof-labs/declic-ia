@@ -61,7 +61,7 @@ Ordre de chargement, du plus général au plus spécifique :
 
 ## JavaScript
 
-`index.html` charge un seul module : `js/main.js` (`type="module"`, donc différé). `main.js` démarre chaque module dans un `try/catch` isolé. Il ne charge `form-demo.js` que si le formulaire est présent.
+`index.html` charge un seul module : `js/main.js` (`type="module"`, donc différé). `main.js` charge chaque module par import dynamique, chacun avec sa propre gestion d’erreur. Si un module ne peut pas être chargé ou échoue à l’exécution, les autres fonctionnent quand même. Il ne charge `form-demo.js` que si le formulaire est présent.
 
 Contrats entre HTML, CSS et JS :
 

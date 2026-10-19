@@ -33,6 +33,8 @@
 }
 
 .brand {
+  display: inline-block;
+  padding-block: var(--space-2);   /* cible tactile ≥ 24 px (WCAG 2.5.8) */
   color: var(--md-sys-color-heading);
   font-size: var(--md-sys-typescale-title-l-size);
   font-weight: var(--md-sys-typescale-weight-black);

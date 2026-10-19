@@ -1,27 +1,24 @@
 /* ==========================================================================
    Déclic IA — Point d'entrée
-   Initialise uniquement les modules nécessaires. Chaque module est isolé :
-   une erreur dans l'un n'empêche pas les autres de fonctionner, et la page
-   reste entièrement utilisable sans JavaScript.
+   Initialise uniquement les modules nécessaires. Chaque module est chargé
+   et démarré indépendamment (import dynamique + try/catch) : si l'un ne
+   peut pas être chargé ou échoue à l'exécution, les autres fonctionnent.
+   La page reste entièrement utilisable sans JavaScript.
    ========================================================================== */
 
-import { initNavigation } from './navigation.js';
-import { initVideo } from './video.js';
+const MODULES = [
+  { name: 'navigation', path: './navigation.js', init: 'initNavigation' },
+  { name: 'video', path: './video.js', init: 'initVideo' },
+  // Le formulaire n'est chargé que s'il est présent dans la page.
+  { name: 'form-demo', path: './form-demo.js', init: 'initDemoForm', when: '[data-demo-form]' },
+];
 
-function safeInit(name, init) {
-  try {
-    init();
-  } catch (error) {
-    console.error(`[Déclic IA] Échec de l’initialisation du module « ${name} ».`, error);
-  }
-}
+for (const { name, path, init, when } of MODULES) {
+  if (when && !document.querySelector(when)) continue;
 
-safeInit('navigation', initNavigation);
-safeInit('video', initVideo);
-
-// Le module du formulaire n'est chargé que si le formulaire est présent.
-if (document.querySelector('[data-demo-form]')) {
-  import('./form-demo.js')
-    .then(({ initDemoForm }) => safeInit('form-demo', initDemoForm))
-    .catch((error) => console.error('[Déclic IA] Module « form-demo » indisponible.', error));
+  import(path)
+    .then((module) => module[init]())
+    .catch((error) => {
+      console.error(`[Déclic IA] Module « ${name} » indisponible.`, error);
+    });
 }
