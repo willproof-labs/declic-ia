@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Déclic IA — Responsive
+   Adaptations par breakpoint UNIQUEMENT. Aucun style métier nouveau.
+   Breakpoints :
+     < 48rem   (≈ < 768 px)  mobile
+     ≥ 48rem   (≈ 768 px)    tablette
+     ≥ 64rem   (≈ 1024 px)   desktop
+   ========================================================================== */
+
+/* ==========================================================================
+   Mobile et tablette (< 64rem) — navigation
+   Sans JavaScript : la navigation reste visible et passe à la ligne ;
+   le header n'est pas collant pour ne pas masquer l'écran.
+   Avec JavaScript (Lot 3, [data-nav-ready]) : menu repliable.
+   ========================================================================== */
+@media (max-width: 63.99rem) {
+  .site-header:not([data-nav-ready]) {
+    position: static;
+  }
+
+  html:has(.site-header:not([data-nav-ready])) {
+    scroll-padding-top: var(--space-4);
+  }
+
+  .site-header:not([data-nav-ready]) .site-nav {
+    flex-basis: 100%;
+  }
+
+  /* Menu replié */
+  .site-header[data-nav-ready] .nav-toggle[aria-expanded="false"] + .site-nav {
+    display: none;
+  }
+
+  /* Menu déplié : colonne pleine largeur sous la marque */
+  .site-header[data-nav-ready] .site-nav {
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+    padding-block: var(--space-2) var(--space-4);
+  }
+
+  .site-header[data-nav-ready] .site-nav__list {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .site-header[data-nav-ready] .site-nav__link {
+    display: block;
+    padding-block: var(--space-3);
+    border-bottom: var(--border-width) solid var(--md-sys-color-outline-variant);
+  }
+
+  .site-header[data-nav-ready] .site-nav__link::after {
+    display: none;
+  }
+
+  .site-header[data-nav-ready] .site-header__cta {
+    width: 100%;
+    min-height: 3rem;
+  }
+}
+
+/* ==========================================================================
+   Mobile seul (< 48rem)
+   ========================================================================== */
+@media (max-width: 47.99rem) {
+  .figure-pair,
+  .formations-grid,
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group .button {
+    flex: 1 1 100%;
+  }
+
+  .video__frame {
+    border-radius: var(--md-sys-shape-corner-m);
+  }
+
+  .demo-form {
+    padding: var(--space-5);
+    border-radius: var(--md-sys-shape-corner-l);
+  }
+
+  .demo-form__submit {
+    justify-self: stretch;
+  }
+}
+
+/* ==========================================================================
+   Tablette et plus (≥ 48rem)
+   ========================================================================== */
+@media (min-width: 48rem) {
+  /* Hero : l'illustration entière, sans recadrage */
+  .hero__media img {
+    aspect-ratio: auto;
+  }
+
+  /* Méthode : les deux illustrations côte à côte, flèche vers la droite */
+  .figure-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+
+  .figure-pair__item:first-child::after {
+    left: calc(100% + var(--space-8) / 2);
+    top: 26%;
+    bottom: auto;
+    transform: translate(-75%, -50%) rotate(-45deg);
+  }
+
+  .pattern {
+    max-width: 30rem;
+  }
+
+  /* Formations : deux colonnes, frise conservée */
+  .formations-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .formation:nth-child(4) {
+    padding-bottom: var(--space-7);
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥ 64rem)
+   ========================================================================== */
+@media (min-width: 64rem) {
+  /* Bouton de menu masqué : la navigation est toujours visible */
+  .nav-toggle {
+    display: none;
+  }
+
+  /* Hero : composition de l'endcard — équipe à gauche, message à droite,
+     posé dans l'espace laissé libre par l'illustration 05 */
+  .hero {
+    padding-block: var(--space-5) var(--space-6);
+  }
+
+  .hero__inner {
+    grid-template-areas: "stack";
+    align-items: center;
+  }
+
+  .hero__content,
+  .hero__media {
+    grid-area: stack;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    justify-self: end;
+    width: 40%;
+    padding-block: var(--space-6);
+  }
+
+  /* Méthode : le pattern devient une ligne horizontale */
+  .pattern {
+    --pattern-gap: var(--space-6);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    max-width: none;
+  }
+
+  .pattern__step {
+    padding-inline: var(--space-4);
+  }
+
+  .pattern__step:not(:last-child)::after {
+    left: 100%;
+    top: 50%;
+    width: var(--pattern-gap);
+    height: 2px;
+  }
+
+  .key-line {
+    max-width: none;
+  }
+
+  .method-text {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+
+  /* Formations : escalier ascendant 01 → 04 */
+  .formations-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: var(--space-5);
+    align-items: start;
+  }
+
+  .formation,
+  .formation:nth-child(4) {
+    padding: var(--space-6) 0 0;
+    border-left: 0;
+    border-top: 4px solid var(--rail);
+  }
+
+  .formation::before {
+    left: 0;
+    top: calc(-0.75rem - 2px);
+  }
+
+  .formation:nth-child(2) { margin-top: var(--space-6); }
+  .formation:nth-child(3) { margin-top: calc(2 * var(--space-6)); }
+  .formation:nth-child(4) { margin-top: calc(3 * var(--space-6)); }
+
+  .formation__steps {
+    grid-template-columns: 1fr;
+  }
+
+  /* Certifications : trois colonnes séparées par des filets verticaux */
+  .certifications-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .certification,
+  .certification:first-child {
+    padding: 0 var(--space-6);
+    border-top: 0;
+    border-left: var(--border-width) solid var(--md-sys-color-outline-variant);
+  }
+
+  .certification:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .certification:last-child {
+    padding-right: 0;
+  }
+
+  /* Bénéfices : illustration à gauche, en miroir de la section Problème */
+  .split--reverse .split__media {
+    order: -1;
+  }
+
+  /* CTA final : texte et formulaire côte à côte */
+  .cta {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 28rem);
+    align-items: center;
+  }
+}

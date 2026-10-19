@@ -1,0 +1,649 @@
+/* ==========================================================================
+   Déclic IA — Composants
+   Boutons, hero, vidéo, problème, méthode, formations, certifications,
+   bénéfices, CTA + formulaire de démonstration, footer.
+   Styles mobile-first ; les variantes par breakpoint sont dans
+   responsive.css. Toutes les valeurs passent par tokens.css.
+
+   Principe : peu de conteneurs. Seuls la vidéo et le formulaire sont
+   encadrés ; le reste respire sur le fond ivoire, comme l'endcard.
+   ========================================================================== */
+
+/* ==========================================================================
+   Boutons (M3 : filled = action principale, outlined = action secondaire)
+   ========================================================================== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 3rem;                 /* cible tactile ≥ 48 px */
+  padding: var(--space-3) var(--space-5);
+  border: var(--border-width) solid transparent;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: var(--md-sys-typescale-label-l-size);
+  font-weight: var(--md-sys-typescale-weight-bold);
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    box-shadow var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+}
+
+.button:focus-visible {
+  border-radius: var(--md-sys-shape-corner-full);
+}
+
+.button--filled {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  box-shadow: var(--md-sys-elevation-1);
+}
+
+.button--filled:hover {
+  background-color: var(--md-sys-color-primary-hover);
+  color: var(--md-sys-color-on-primary);
+  box-shadow: var(--md-sys-elevation-2);
+}
+
+.button--filled:active {
+  box-shadow: var(--md-sys-elevation-0);
+}
+
+.button--outlined {
+  background-color: transparent;
+  border-color: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-secondary);
+}
+
+.button--outlined:hover {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-secondary);
+}
+
+/* Bouton du header : même rôle que le CTA du hero, gabarit compact */
+.site-header__cta {
+  min-height: 2.75rem;
+  padding-inline: var(--space-4);
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   Bouton de menu (affiché par navigation.js — Lot 3)
+   Contrat : le script retire [hidden], pose [data-nav-ready] sur
+   .site-header et bascule aria-expanded.
+   ========================================================================== */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-width) solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+  background: transparent;
+  color: var(--md-sys-color-heading);
+  font-weight: var(--md-sys-typescale-weight-bold);
+}
+
+/* Icône « trois traits » dessinée en CSS, purement décorative */
+.nav-toggle::before {
+  content: "";
+  width: 1.125rem;
+  height: 0.75rem;
+  background:
+    linear-gradient(currentColor 0 0) top / 100% 2px no-repeat,
+    linear-gradient(currentColor 0 0) center / 100% 2px no-repeat,
+    linear-gradient(currentColor 0 0) bottom / 100% 2px no-repeat;
+}
+
+.nav-toggle[aria-expanded="true"] {
+  background-color: var(--md-sys-color-primary-container);
+  border-color: var(--md-sys-color-primary);
+}
+
+/* ==========================================================================
+   Navigation : lien actif au survol
+   ========================================================================== */
+.site-nav__link {
+  position: relative;
+}
+
+.site-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.15rem;
+  height: 2px;
+  background-color: var(--md-sys-color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
+}
+
+.site-nav__link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ==========================================================================
+   Typographie de section
+   ========================================================================== */
+.eyebrow {
+  color: var(--md-sys-color-primary);
+  font-size: var(--md-sys-typescale-label-l-size);
+  font-weight: var(--md-sys-typescale-weight-bold);
+  letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   Hero
+   Le fond du hero reprend le ton de l'illustration 05 pour qu'elle se
+   fonde dans la page, à la manière de l'endcard.
+   ========================================================================== */
+.hero {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.hero__media img {
+  width: 100%;
+  /* « darken » : le fond clair de l'illustration prend exactement la teinte
+     du bandeau ; le trait et les couleurs, plus sombres, restent intacts. */
+  mix-blend-mode: darken;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: left center;   /* mobile : on garde l'équipe, on coupe l'espace vide */
+}
+
+/* Titre de la vidéo : sur une ligne quand la place le permet */
+.section--video .section__title {
+  max-width: none;
+}
+
+/* ==========================================================================
+   Vidéo — seul bloc « encadré » avec le formulaire
+   ========================================================================== */
+.video__frame {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background-color: var(--md-sys-color-secondary);
+  border-radius: var(--md-sys-shape-corner-l);
+  box-shadow: var(--md-sys-elevation-3);
+}
+
+.video__player {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video__note {
+  margin-top: var(--space-3);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-body-s-size);
+}
+
+.video__fallback {
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--md-sys-color-tertiary);
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-surface);
+}
+
+/* ==========================================================================
+   Problème — repères corail (décoratifs) pour les points de friction
+   ========================================================================== */
+.problem-list {
+  display: grid;
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+  font-size: var(--md-sys-typescale-body-l-size);
+}
+
+.problem-list li {
+  position: relative;
+  padding-left: var(--space-6);
+}
+
+.problem-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 1.25rem;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--md-sys-color-tertiary-decorative);
+}
+
+/* ==========================================================================
+   Méthode — le pattern MÉTHODE → … → DÉCISION HUMAINE
+   Codage couleur unique sur toute la section :
+   - préparation humaine (méthode, contexte) : contour neutre ;
+   - IA générative : bleu vif (l'IA propose) ;
+   - vérification, décision : bleu marine (l'humain tranche).
+   ========================================================================== */
+.pattern {
+  --pattern-gap: var(--space-5);
+  display: grid;
+  gap: var(--pattern-gap);
+  padding: 0;
+  list-style: none;
+  counter-reset: pattern;
+}
+
+.pattern__step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: none;
+  padding: var(--space-3) var(--space-5);
+  border: var(--border-width-strong) solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-heading);
+  font-weight: var(--md-sys-typescale-weight-bold);
+  counter-increment: pattern;
+}
+
+.pattern__step::before {
+  content: counter(pattern);
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-heading);
+  font-size: var(--md-sys-typescale-label-s-size);
+}
+
+/* Connecteur vertical entre étapes (mobile) */
+.pattern__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--space-5) + 0.875rem - 1px);
+  top: 100%;
+  width: 2px;
+  height: var(--pattern-gap);
+  background-color: var(--md-sys-color-outline);
+}
+
+/* Étape 3 : IA générative — l'IA propose */
+.pattern__step:nth-child(3) {
+  border-color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.pattern__step:nth-child(3)::before {
+  background-color: var(--md-sys-color-on-primary);
+  color: var(--md-sys-color-primary);
+}
+
+/* Étapes 4 et 5 : l'humain vérifie et décide */
+.pattern__step:nth-child(n + 4) {
+  border-color: var(--md-sys-color-secondary);
+  background-color: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-secondary);
+}
+
+.pattern__step:nth-child(n + 4)::before {
+  background-color: var(--md-sys-color-on-secondary);
+  color: var(--md-sys-color-secondary);
+}
+
+/* Décision humaine : point d'arrivée, souligné d'un trait corail */
+.pattern__step--human {
+  box-shadow: 0 0 0 4px var(--md-sys-color-surface), 0 0 0 6px var(--md-sys-color-tertiary-decorative);
+}
+
+.key-line {
+  margin-top: var(--space-7);
+  max-width: 20ch;
+  color: var(--md-sys-color-heading);
+  font-size: var(--md-sys-typescale-headline-size);
+  font-weight: var(--md-sys-typescale-weight-black);
+  line-height: var(--md-sys-typescale-line-tight);
+  letter-spacing: var(--md-sys-typescale-tracking-tight);
+}
+
+.method-text {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-body-l-size);
+}
+
+/* Paire d'illustrations : l'IA propose → l'humain décide */
+.figure-pair__item {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.figure-pair__item img {
+  width: 100%;
+  border-radius: var(--md-sys-shape-corner-m);
+}
+
+.figure-pair__item figcaption {
+  padding-top: var(--space-3);
+  border-top: 3px solid var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary);
+  font-size: var(--md-sys-typescale-title-l-size);
+  font-weight: var(--md-sys-typescale-weight-bold);
+  line-height: var(--md-sys-typescale-line-snug);
+}
+
+.figure-pair__item:last-child figcaption {
+  border-top-color: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-heading);
+}
+
+/* Flèche de transition (mobile : vers le bas ; desktop : vers la droite) */
+.figure-pair__item:first-child {
+  position: relative;
+}
+
+.figure-pair__item:first-child::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(-1 * var(--space-6) / 2 - 0.5rem);
+  width: 1rem;
+  height: 1rem;
+  border-right: 3px solid var(--md-sys-color-heading);
+  border-bottom: 3px solid var(--md-sys-color-heading);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* ==========================================================================
+   Formations — un parcours progressif, pas une grille de cartes
+   Chaque étape porte un filet dont l'intensité monte de 01 à 04.
+   Mobile : frise verticale ; desktop : escalier (responsive.css).
+   ========================================================================== */
+.formations-grid {
+  --rail-1: var(--md-sys-color-primary-container);
+  --rail-2: color-mix(in srgb, var(--md-sys-color-primary) 50%, var(--md-sys-color-primary-container));
+  --rail-3: var(--md-sys-color-primary);
+  --rail-4: var(--md-sys-color-secondary);
+  gap: 0;
+}
+
+.formation {
+  --rail: var(--rail-1);
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  max-width: none;
+  padding: var(--space-2) 0 var(--space-7) var(--space-6);
+  border-left: 4px solid var(--rail);
+}
+
+.formation:nth-child(2) { --rail: var(--rail-2); }
+.formation:nth-child(3) { --rail: var(--rail-3); }
+.formation:nth-child(4) { --rail: var(--rail-4); padding-bottom: var(--space-2); }
+
+/* Jalon sur le filet */
+.formation::before {
+  content: "";
+  position: absolute;
+  left: calc(-0.75rem - 2px);
+  top: var(--space-2);
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 4px solid var(--rail);
+  border-radius: 50%;
+  background-color: var(--md-sys-color-surface);
+}
+
+.formation:nth-child(4)::before {
+  background-color: var(--rail);
+}
+
+.formation__step {
+  color: var(--md-sys-color-primary);
+  font-size: var(--md-sys-typescale-label-l-size);
+  font-weight: var(--md-sys-typescale-weight-bold);
+}
+
+.formation:nth-child(4) .formation__step {
+  color: var(--md-sys-color-heading);
+}
+
+.formation__number {
+  font-variant-numeric: tabular-nums;
+}
+
+.formation__title {
+  max-width: 22ch;
+}
+
+.formation__text {
+  color: var(--md-sys-color-on-surface);
+}
+
+.formation__meta {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-body-s-size);
+}
+
+.formation__meta strong {
+  color: var(--md-sys-color-heading);
+}
+
+.formation__steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-1) var(--space-4);
+  padding-left: 1.5em;
+  font-size: var(--md-sys-typescale-body-s-size);
+  font-weight: var(--md-sys-typescale-weight-medium);
+}
+
+.formation__steps li::marker {
+  color: var(--md-sys-color-primary);
+  font-weight: var(--md-sys-typescale-weight-bold);
+}
+
+.formation__note {
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-body-s-size);
+}
+
+/* ==========================================================================
+   Certifications tierces — surface blanche distincte (contenu externe),
+   séparées par des filets, sans cartes ni logos.
+   ========================================================================== */
+.section--certifications {
+  background-color: var(--md-sys-color-surface-container);
+}
+
+.certifications-grid {
+  gap: 0;
+}
+
+.certification {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  max-width: none;
+  padding-block: var(--space-5);
+  border-top: var(--border-width) solid var(--md-sys-color-outline-variant);
+}
+
+.certification:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.certification__title {
+  font-size: var(--md-sys-typescale-title-m-size);
+}
+
+.certification__org {
+  color: var(--md-sys-color-primary);
+  font-size: var(--md-sys-typescale-label-l-size);
+  font-weight: var(--md-sys-typescale-weight-bold);
+}
+
+.certification__disclaimer {
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: var(--border-width) dashed var(--md-sys-color-outline);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-body-s-size);
+}
+
+/* ==========================================================================
+   Bénéfices — liste à coches bleues
+   ========================================================================== */
+.benefits-list {
+  display: grid;
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+  font-size: var(--md-sys-typescale-body-l-size);
+}
+
+.benefits-list li {
+  position: relative;
+  padding-left: var(--space-7);
+}
+
+.benefits-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-primary-container);
+}
+
+.benefits-list li::after {
+  content: "";
+  position: absolute;
+  left: 0.6rem;
+  top: 0.35em;
+  width: 0.5rem;
+  height: 0.9rem;
+  border-right: 3px solid var(--md-sys-color-primary);
+  border-bottom: 3px solid var(--md-sys-color-primary);
+  transform: rotate(45deg);
+}
+
+/* ==========================================================================
+   CTA final — bandeau bleu marine, formulaire sur surface blanche
+   ========================================================================== */
+.section--cta {
+  background-color: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-secondary);
+}
+
+.section--cta .section__title {
+  color: var(--md-sys-color-on-secondary);
+}
+
+.cta__text {
+  color: var(--md-sys-color-primary-container);   /* 13:1 sur le marine */
+  font-size: var(--md-sys-typescale-body-l-size);
+}
+
+.demo-form {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border-radius: var(--md-sys-shape-corner-xl);
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--md-sys-elevation-3);
+}
+
+.demo-form__field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.demo-form__label {
+  color: var(--md-sys-color-heading);
+  font-weight: var(--md-sys-typescale-weight-bold);
+}
+
+/* Champ « outlined » M3 */
+.demo-form__input {
+  width: 100%;
+  min-height: 3.5rem;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-xs);
+  background-color: var(--md-sys-color-surface-container);
+  transition: border-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+}
+
+.demo-form__input:hover {
+  border-color: var(--md-sys-color-on-surface);
+}
+
+.demo-form__input:focus-visible {
+  border-color: var(--md-sys-color-primary);
+  outline-offset: 0;
+  border-radius: var(--md-sys-shape-corner-xs);
+}
+
+.demo-form__input[aria-invalid="true"] {
+  border-color: var(--md-sys-color-error);
+  border-width: var(--border-width-strong);
+}
+
+.demo-form__error {
+  color: var(--md-sys-color-error);
+  font-size: var(--md-sys-typescale-body-s-size);
+  font-weight: var(--md-sys-typescale-weight-medium);
+}
+
+.demo-form__submit {
+  justify-self: start;
+}
+
+.demo-form__status:empty {
+  display: none;
+}
+
+.demo-form__status {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--md-sys-shape-corner-s);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  font-weight: var(--md-sys-typescale-weight-medium);
+}
+
+/* Focus visible lisible sur le bandeau marine */
+.section--cta :focus-visible {
+  outline-color: var(--md-sys-color-primary);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.brand--footer {
+  font-size: var(--md-sys-typescale-title-l-size);
+}
+
+.site-footer__tagline {
+  color: var(--md-sys-color-on-surface);
+  font-weight: var(--md-sys-typescale-weight-medium);
+}
+
+.site-footer__mention {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-body-s-size);
+}
