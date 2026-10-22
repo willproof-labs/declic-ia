@@ -16,7 +16,8 @@ Cocher chaque point avant une mise en production. Les vérifications automatisé
 ## Technique
 
 - [ ] Tous les liens internes (`#pourquoi`, `#methode`, `#formations`, `#video`, `#accueil`, `#contenu`) mènent à une cible existante.
-- [ ] Tous les chemins sont relatifs : aucun `/` initial, aucun nom d’hôte, aucune adresse `localhost`.
+- [ ] Tous les chemins sont relatifs : aucun `/` initial, aucun nom d’hôte, aucune adresse `localhost`. Seule exception admise : `og:url` et `og:image`, qui exigent l’adresse absolue du site publié.
+- [ ] L’aperçu de partage est correct dans le LinkedIn Post Inspector : titre, description et image `og-declic-ia.jpg` (1200 × 627).
 - [ ] La vidéo est servie depuis `assets/video/declic-ia.mp4` uniquement.
 - [ ] Aucune ressource externe requise (polices, scripts, CDN, analytics).
 - [ ] Aucun backend ni API.

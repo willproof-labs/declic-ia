@@ -5,7 +5,7 @@
 - **Site statique :** HTML5 sémantique, CSS moderne avec custom properties, modules JavaScript natifs. Pas de framework, de backend, d’API, de base de données ni de dépendance externe à l’exécution.
 - **Amélioration progressive :** tout le contenu et la navigation par ancres fonctionnent sans JavaScript. Le JavaScript ajoute le menu repliable, la gestion du repli vidéo et la validation du formulaire de démonstration.
 - **Une responsabilité par fichier :** chaque fichier CSS ou JS couvre un seul domaine, pour pouvoir corriger un point sans toucher au reste.
-- **Chemins relatifs uniquement :** le site fonctionne à la racine d’un domaine comme sous un sous-chemin GitHub Pages.
+- **Chemins relatifs uniquement :** le site fonctionne à la racine d’un domaine comme sous un sous-chemin GitHub Pages. Seule exception : les balises Open Graph `og:url` et `og:image` du `<head>`, qui exigent l’adresse absolue du site publié. L’image de partage est `assets/images/og-declic-ia.jpg` (1200 × 627), un montage des illustrations 01 et 05 sans régénération.
 
 ## Page
 

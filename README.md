@@ -25,7 +25,7 @@ declic-ia/
 │   ├── video.js               Lecteur local et état de repli
 │   └── form-demo.js           Formulaire de démonstration (aucun envoi)
 ├── assets/
-│   ├── images/                Les six illustrations fournies
+│   ├── images/                Les six illustrations fournies + image de partage
 │   └── video/declic-ia.mp4    Vidéo locale
 ├── .github/workflows/deploy-pages.yml
 ├── docs/
@@ -36,7 +36,9 @@ declic-ia/
 └── README.md
 ```
 
-Tous les chemins du site sont **relatifs** (`css/…`, `js/…`, `assets/…`). Le site fonctionne à la racine d’un domaine comme sous un sous-chemin (par exemple `https://<compte>.github.io/<depot>/`). Aucun nom d’hôte n’est écrit en dur.
+Tous les chemins du site sont **relatifs** (`css/…`, `js/…`, `assets/…`). Le site fonctionne à la racine d’un domaine comme sous un sous-chemin (par exemple `https://<compte>.github.io/<depot>/`).
+
+**Une seule exception :** les balises Open Graph `og:url` et `og:image` (voir « Aperçu de partage ») contiennent l’adresse absolue du site publié, car la norme l’exige. Aucune autre adresse n’est écrite en dur.
 
 ---
 
@@ -123,6 +125,55 @@ La commande de build est une simple copie de fichiers, sans installation ni dép
 - **Lecture :** poster `assets/images/06_DECLIC_IA_ENDCARD.jpeg`, `preload="metadata"`, pas d’autoplay.
 - **Remplacer la vidéo :** déposer le nouveau fichier sous le même nom, au même emplacement. Aucun autre changement n’est nécessaire.
 - **Git LFS :** ne pas l’utiliser pour la vidéo, le fichier est versionné directement.
+
+---
+
+## Aperçu de partage (Open Graph)
+
+Quand le lien du site est partagé (LinkedIn, messageries…), l’aperçu est construit à partir des balises Open Graph du `<head>` de `index.html` :
+
+- **Titre :** « Déclic IA — projet de portfolio réalisé avec l’IA ».
+- **Description :** « Site vitrine d’un organisme de formation fictif : méthode et décisions humaines, code par Claude Code, publicité vidéo générée avec Higgsfield. »
+- **Image :** `assets/images/og-declic-ia.jpg`, 1200 × 627 px, environ 105 Ko. C’est un montage des illustrations `01` (avant) et `05` (après), reprises sans régénération (recadrage et mise à l’échelle uniquement). Le logo y est composé en texte avec les couleurs exactes du site.
+- **Adresse absolue :** `og:url` et `og:image` pointent vers `https://willproof-labs.github.io/declic-ia/`. Si le site change d’adresse (autre compte, domaine personnalisé, Cloudflare Pages seul), il faut mettre à jour ces deux balises.
+
+Après publication, coller l’adresse du site dans le **LinkedIn Post Inspector** pour vérifier l’aperçu et forcer LinkedIn à relire la page, car il garde les aperçus en cache.
+
+---
+
+## Versions
+
+- **`assessment-v1`** : tag de la version rendue au jury de l’assessment le 20 octobre 2026, avant l’ajout de l’aperçu de partage. Pour la consulter ou la restaurer : `git checkout assessment-v1`.
+
+---
+
+## Démarche et crédits
+
+Ce site est un **projet de portfolio**. Il démontre qu’on peut concevoir et livrer un site fonctionnel et pertinent avec l’IA générative, sous pilotage humain. Il a été réalisé pour l’exercice 2 d’un assessment, du 16 au 20 octobre 2026. « Déclic IA » est un nom fictif : d’autres sites portant un nom proche n’ont aucun lien avec ce projet.
+
+### Qui a fait quoi
+
+| Contribution | Réalisée par |
+|---|---|
+| Méthode, cadrage, brief du site, décisions, validations lot par lot, contrôle qualité humain | Wilson FRED |
+| Images de travail, scripts et storytelling de la publicité | Duck.ai (modèle GPT-6 Luna), sous la direction de Wilson FRED |
+| Publicité vidéo | Générée avec Higgsfield ; montage, sous-titres et contrôle qualité pilotés par Wilson FRED |
+| Code du site (HTML, CSS, JavaScript), tests automatisés, documentation, workflow de déploiement | Claude (Claude Code), à partir du brief et des validations de Wilson FRED |
+| Image de partage | Montage des illustrations 01 et 05, sans régénération |
+
+Le site a été construit en lots validés un par un (fondations, composants, JavaScript, déploiement, contrôle qualité final). Chaque lot correspond à un commit de l’historique.
+
+### Sources méthodologiques
+
+- Expérience terrain de Product Owner / Program Manager.
+- Professional Scrum Product Owner I (PSPO I), Scrum.org — certifié en 2024.
+- SAFe 6 Agilist, Scaled Agile — certifié en 2024.
+- AI-Native SAFe Agilist, Scaled Agile — certifié à l’été 2026.
+- Google Cloud — GenAI for Leaders — certifié en octobre 2026.
+- [Open Source Software Development Methods](https://www.coursera.org/account/accomplishments/certificate/DWXAVMFC24S9), The Linux Foundation (Coursera) — certifié en 2023.
+- [Google Project Management Professional Certificate](https://www.coursera.org/professional-certificates/google-project-management) (Coursera) — en cours : cours validés, Capstone en cours.
+
+Badges vérifiables sur le [profil Credly de Wilson FRED](https://www.credly.com/users/wilson-fred/badges/credly).
 
 ---
 
