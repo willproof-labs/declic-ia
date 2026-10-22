@@ -166,10 +166,10 @@ Le site a été construit en lots validés un par un (fondations, composants, Ja
 ### Sources méthodologiques
 
 - Expérience terrain de Product Owner / Program Manager.
-- Professional Scrum Product Owner I (PSPO I), Scrum.org — certifié en 2024.
-- SAFe 6 Agilist, Scaled Agile — certifié en 2024.
-- AI-Native SAFe Agilist, Scaled Agile — certifié à l’été 2026.
-- Google Cloud — GenAI for Leaders — certifié en octobre 2026.
+- [Professional Scrum Product Owner™ I (PSPO I)](https://www.credly.com/badges/e8f3410b-8a97-4030-b1a0-5ef19bbd1fc2), Scrum.org — délivré le 19 juillet 2024.
+- [Certified SAFe® 6 Agilist](https://www.credly.com/badges/bdc7e56a-fca2-4c63-8fbb-5653e8b621d5), Scaled Agile — certifié en 2024.
+- [Certified AI-Native SAFe® Agilist](https://www.credly.com/badges/2ffeda5c-16de-4abf-b06e-c6d0395880c4), Scaled Agile — certifié à l’été 2026.
+- [Generative AI Leader Certification](https://www.credly.com/badges/8f59ae7b-e153-4620-8e29-9a2b40451e90), Google Cloud — certifié en octobre 2026.
 - [Open Source Software Development Methods](https://www.coursera.org/account/accomplishments/certificate/DWXAVMFC24S9), The Linux Foundation (Coursera) — certifié en 2023.
 - [Google Project Management Professional Certificate](https://www.coursera.org/professional-certificates/google-project-management) (Coursera) — en cours : cours validés, Capstone en cours.
 
