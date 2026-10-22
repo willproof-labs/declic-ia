@@ -33,6 +33,7 @@ declic-ia/
 │   └── qa-checklist.md        Liste de contrôle qualité
 ├── .nojekyll
 ├── .gitignore
+├── LICENSE                    MIT pour le code uniquement (voir « Licence »)
 └── README.md
 ```
 
@@ -174,6 +175,21 @@ Le site a été construit en lots validés un par un (fondations, composants, Ja
 - [Google Project Management Professional Certificate](https://www.coursera.org/professional-certificates/google-project-management) (Coursera) — en cours : cours validés, Capstone en cours.
 
 Badges vérifiables sur le [profil Credly de Wilson FRED](https://www.credly.com/users/wilson-fred/badges/credly).
+
+---
+
+## Licence
+
+Ce dépôt est sous **double régime** :
+
+| Élément | Régime |
+|---|---|
+| **Code** : balisage de `index.html`, `css/`, `js/`, `.github/workflows/`, `README.md`, `docs/` | **Licence MIT**, voir [`LICENSE`](LICENSE). Réutilisation libre avec mention du copyright. Fourni « en l’état », sans garantie. |
+| **Contenus** : `assets/images/`, `assets/video/`, textes rédactionnels affichés par le site, nom et identité visuelle « Déclic IA » | **Tous droits réservés**, © 2026 Wilson FRED. Toute réutilisation nécessite une autorisation écrite. |
+
+**Pourquoi les contenus ne sont pas sous licence libre.** Les illustrations et la publicité vidéo ont été générées avec Duck.ai et Higgsfield. Leurs conditions d’utilisation laissent les contenus générés à l’utilisateur, mais en encadrent la réutilisation : Higgsfield interdit notamment d’utiliser ses sorties pour entraîner des modèles d’IA. Une licence libre accorderait à des tiers des droits que l’auteur ne détient pas lui-même.
+
+**Marques citées.** Scrum.org, Professional Scrum Product Owner, PSPO, SAFe et Scaled Agile sont des marques de leurs détenteurs respectifs. Elles sont citées à titre informatif, sans affiliation.
 
 ---
 
