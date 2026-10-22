@@ -156,9 +156,10 @@ Ce site est un **projet de portfolio**. Il démontre qu’on peut concevoir et l
 
 | Contribution | Réalisée par |
 |---|---|
-| Méthode, cadrage, brief du site, décisions, validations lot par lot, contrôle qualité humain | Wilson FRED |
+| Méthode, cadrage, planification, brief du site, décisions, validations lot par lot, contrôle qualité humain | Wilson FRED |
+| Fil conducteur du projet : premiers storyboards, premiers prompts pour Claude et Higgsfield | Microsoft 365 Copilot, sous la direction de Wilson FRED |
 | Images de travail, scripts et storytelling de la publicité | Duck.ai (modèle GPT-6 Luna), sous la direction de Wilson FRED |
-| Publicité vidéo | Générée avec Higgsfield ; montage, sous-titres et contrôle qualité pilotés par Wilson FRED |
+| Publicité vidéo | Générée avec Higgsfield, via son Supercomputer pour contrôler le rendu et le coût à chaque étape ; montage, sous-titres et contrôle qualité pilotés par Wilson FRED |
 | Code du site (HTML, CSS, JavaScript), tests automatisés, documentation, workflow de déploiement | Claude (Claude Code), à partir du brief et des validations de Wilson FRED |
 | Image de partage | Montage des illustrations 01 et 05, sans régénération |
 
